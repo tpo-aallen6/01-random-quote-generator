@@ -3,10 +3,6 @@ Treehouse FSJS Techdegree: Adam Allen
 project 1 - A Random Quote Generator
 ******************************************/
 
-/*** 
- * `quotes` array 
-***/
-
 const quotes = [
   {
     quote: "I’ve failed over and over and over again in my life and that is why I succeed.",
@@ -44,10 +40,6 @@ const quotes = [
   }
 ];
 
-/*** 
- * `colors` array 
-***/
-
 const colors = [
   '#246D0A',
   '#530A6D',
@@ -69,7 +61,10 @@ const quote_box = document.getElementById('quote-box');
 const header = document.getElementById('random-quotes');
 
 /*** 
- * `getRandomColor` function 
+ * Returns a random color when called.
+ * Uses Math.floor and Math.random to generate a random number from the array's length.
+ * @param randomColor the random index position of the color
+ * @returns colors[randomColor] the random color taken from the colors array
 ***/
 
 function getRandomColor() {
@@ -78,13 +73,21 @@ function getRandomColor() {
 }
 
 /***
- * `getRandomQuote` function
+ * Returns a random quoted when called.
+ * Uses Math.floor and Math.random to generate a random number fron the array's length.
+ * @param random the random index position of the quote
+ * @returns quotes[random] the random quote taken from the quotes array
 ***/
 
 function getRandomQuote() {
   const random = Math.floor(Math.random()* quotes.length);
   return quotes[random];
 }
+
+/***
+ * Changes the background colors of various elements when called.
+ * @param buttonHeaderColor holds the random color to allow specific elements to match
+***/
 
 function changeColors() {
   const buttonHeaderColor = getRandomColor();
@@ -95,7 +98,10 @@ function changeColors() {
 }
 
 /***
- * `printQuote` function
+ * Prints a random quote and source to the page.
+ * If a citation or year exists for the quote, the quotation prints with that information. 
+ * @param randomQuote holds the random quote to be printed to the page
+ * @param html holds the layout of the content to be printed to the page
 ***/
 
 function printQuote() {
@@ -115,11 +121,6 @@ function printQuote() {
   document.getElementById('quote-box').innerHTML = html;
   changeColors();
 }
-
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
 
 printQuote();
 
