@@ -29,13 +29,27 @@ const quotes = [
   {
     quote: 'This body holding me reminds me of my own mortality. Embrace this moment, remember we are eternal, all this pain is an illusion.',
     source: 'Tool',
-    citation: 'Lateralus - Parabola',
+    citation: 'Parabola',
     year: 2001
   },
   {
     quote: "The secret to happiness, of course, is not getting what you want; it's wanting what you get.",
     source: 'Alex Trebek',
   },
+  {
+    quote: "Information is power. But like all power, there are those who want to keep it for themselves.",
+    source: 'Aaron Swartz',
+  },
+  {
+    quote: "I'm probably more comfortable inside a Marine Corps rifle company than I am anywhere in my life",
+    source: "Jim Webb, USMC",
+  },
+  {
+    quote: "As it has for more than two centuries, progress will come in fits and starts. It's not always a straight line. It's not always a smooth path.",
+    source: 'Barack Obama',
+    citation: 'Victory Speech',
+    year: 2012
+  }
 ];
 
 /***
