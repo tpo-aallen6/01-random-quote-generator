@@ -54,7 +54,7 @@ h1 {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1024px;
   margin: auto;
   padding: 50px;
@@ -71,7 +71,6 @@ h1 {
   line-height: 1.2;
   position: relative;
   margin: 0;
-  margin-left: 10px;
 }
 
 .quote:before,
@@ -106,20 +105,21 @@ h1 {
   content: "—";
 }
 
+.tag {
+  font-style: italic;
+}
+
+.tag::before {
+  content: " ";
+}
+
 .citation {
   font-style: italic;
-  text-align: right;
-  margin-left: 4em;
 }
 
 .citation:before {
   content: ", ";
   font-style: normal;
-}
-
-.year {
-  font-style: italic;
-  text-align: right;
 }
 
 .year:before {

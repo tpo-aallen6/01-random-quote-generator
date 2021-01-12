@@ -7,36 +7,43 @@ const quotes = [
   {
     quote: "I’ve failed over and over and over again in my life and that is why I succeed.",
     source: 'Michael Jordan',
+    tag: '#Motivation'
   },
   {
     quote: "I can't in good conscience allow the U.S. government to destroy privacy, internet freedom and basic liberties for people around the world with this massive surveillance machine they're secretly building.",
     source: 'Edward Snowden',
+    tag: '#Hero'
   },
   {
     quote: "Who controls the past controls the future. Who controls the present controls the past.",
     source: 'George Orwell',
     citation: '1984',
-    year: 1949
+    year: 1949,
+    tag: '#Ministry of Truth'
   },
   {
     quote: 'This body holding me reminds me of my own mortality. Embrace this moment, remember we are eternal, all this pain is an illusion.',
     source: 'Tool',
     citation: 'Parabola',
-    year: 2001
+    year: 2001,
+    tag: '#Lateralus'
   },
   {
     quote: "The secret to happiness, of course, is not getting what you want; it's wanting what you get.",
     source: 'Alex Trebek',
+    tag: '#Genius'
   },
   {
     quote: "Information is power. But like all power, there are those who want to keep it for themselves.",
     source: 'Aaron Swartz',
+    tag: '#Hero'
   },
   {
     quote: "As it has for more than two centuries, progress will come in fits and starts. It's not always a straight line. It's not always a smooth path.",
     source: 'Barack Obama',
     citation: 'Victory Speech',
-    year: 2012
+    year: 2012,
+    tag: '#Legend'
   }
 ];
 
@@ -99,7 +106,8 @@ function changeColors() {
 
 /***
  * Prints a random quote and source to the page.
- * If a citation or year exists for the quote, the quotation prints with that information. 
+ * Calls the getRandomQuote function and stores the quote in randomQuote.
+ * Prints to the page the random quote with the quote's source, citation, year, and tag if applicable. 
  * @param randomQuote holds the random quote to be printed to the page
  * @param html holds the layout of the content to be printed to the page
 ***/
@@ -108,15 +116,24 @@ function printQuote() {
   const randomQuote = getRandomQuote();
 
   let html = `<p class="quote">${randomQuote.quote}</p>
-              <p class="source">${randomQuote.source}</p>`;
+              <p class="source">${randomQuote.source}`;
   
-  if (randomQuote.citation) {
-    html += `<span class="citation">${randomQuote.citation}</span>`;
-  }
+  if (randomQuote.citation && randomQuote.year) {
+    html += `<span class="citation">${randomQuote.citation}</span>
+             <span class="year">${randomQuote.year}</span>`;
 
-    if (randomQuote.year) {
+  } else if (randomQuote.citation && !randomQuote.year) {
+      html += `<span class="citation">${randomQuote.citation}</span>`;
+
+  } else if (randomQuote.year && !randomQuote.citation) {
       html += `<span class="year">${randomQuote.year}</span>`;
   }
+
+  if (randomQuote.tag) {
+    html += `<span class="tag">${randomQuote.tag}</span>`;
+  }
+
+  html += `</p>`;
 
   document.getElementById('quote-box').innerHTML = html;
   changeColors();
