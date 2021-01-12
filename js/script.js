@@ -1,11 +1,7 @@
 /******************************************
-Treehouse FSJS Techdegree:
+Treehouse FSJS Techdegree: Adam Allen
 project 1 - A Random Quote Generator
 ******************************************/
-
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
  * `quotes` array 
@@ -48,12 +44,54 @@ const quotes = [
   }
 ];
 
+/*** 
+ * `colors` array 
+***/
+
+const colors = [
+  '#246D0A',
+  '#530A6D',
+  '#0A4F6D',
+  '#6D280A',
+  '#AF7F47',
+  '#4777AF',
+  '#6DA489',
+  '#A46D88',
+  '#654384',
+  '#628443',
+  '#478B92',
+  '#924E47',
+  '#744792'
+];
+
+const button = document.getElementById('load-quote');
+const quote_box = document.getElementById('quote-box');
+const header = document.getElementById('random-quotes');
+
+/*** 
+ * `getRandomColor` function 
+***/
+
+function getRandomColor() {
+  const randomColor = Math.floor(Math.random() * colors.length);
+  return colors[randomColor];
+}
+
 /***
  * `getRandomQuote` function
 ***/
+
 function getRandomQuote() {
   const random = Math.floor(Math.random()* quotes.length);
   return quotes[random];
+}
+
+function changeColors() {
+  const buttonHeaderColor = getRandomColor();
+  button.style.backgroundColor = buttonHeaderColor;
+  quote_box.style.backgroundColor = buttonHeaderColor;
+  header.style.backgroundColor = buttonHeaderColor;
+  document.body.style.backgroundColor = getRandomColor();
 }
 
 /***
@@ -62,19 +100,20 @@ function getRandomQuote() {
 
 function printQuote() {
   const randomQuote = getRandomQuote();
-  
+
   let html = `<p class="quote">${randomQuote.quote}</p>
               <p class="source">${randomQuote.source}</p>`;
-
+  
   if (randomQuote.citation) {
     html += `<span class="citation">${randomQuote.citation}</span>`;
   }
 
-  if (randomQuote.year) {
-    html += `<span class="year">${randomQuote.year}</span>`;
+    if (randomQuote.year) {
+      html += `<span class="year">${randomQuote.year}</span>`;
   }
 
   document.getElementById('quote-box').innerHTML = html;
+  changeColors();
 }
 
 /***
