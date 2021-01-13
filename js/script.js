@@ -68,27 +68,15 @@ const quote_box = document.getElementById('quote-box');
 const header = document.getElementById('random-quotes');
 
 /*** 
- * Returns a random color when called.
+ * Returns a random item from a given array when called.
  * Uses Math.floor and Math.random to generate a random number from the array's length.
- * @param randomColor the random index position of the color
- * @returns colors[randomColor] the random color taken from the colors array
+ * @param randomItem the random index position of the item
+ * @returns array[randomItem] the random item taken from the given array
 ***/
 
-function getRandomColor() {
-  const randomColor = Math.floor(Math.random() * colors.length);
-  return colors[randomColor];
-}
-
-/***
- * Returns a random quoted when called.
- * Uses Math.floor and Math.random to generate a random number fron the array's length.
- * @param random the random index position of the quote
- * @returns quotes[random] the random quote taken from the quotes array
-***/
-
-function getRandomQuote() {
-  const random = Math.floor(Math.random()* quotes.length);
-  return quotes[random];
+function getRandomItem(array) {
+  const randomItem = Math.floor(Math.random() * array.length);
+  return array[randomItem];
 }
 
 /***
@@ -97,23 +85,23 @@ function getRandomQuote() {
 ***/
 
 function changeColors() {
-  const buttonHeaderColor = getRandomColor();
+  const buttonHeaderColor = getRandomItem(colors);
   button.style.backgroundColor = buttonHeaderColor;
   quote_box.style.backgroundColor = buttonHeaderColor;
   header.style.backgroundColor = buttonHeaderColor;
-  document.body.style.backgroundColor = getRandomColor();
+  document.body.style.backgroundColor = getRandomItem(colors);
 }
 
 /***
  * Prints a random quote and source to the page.
- * Calls the getRandomQuote function and stores the quote in randomQuote.
+ * Calls the getRandomItemfunction and stores a quote in randomQuote.
  * Prints to the page the random quote with the quote's source, citation, year, and tag if applicable. 
  * @param randomQuote holds the random quote to be printed to the page
  * @param html holds the layout of the content to be printed to the page
 ***/
 
 function printQuote() {
-  const randomQuote = getRandomQuote();
+  const randomQuote = getRandomItem(quotes);
 
   let html = `<p class="quote">${randomQuote.quote}</p>
               <p class="source">${randomQuote.source}`;
