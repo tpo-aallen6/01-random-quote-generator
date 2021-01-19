@@ -63,10 +63,6 @@ const colors = [
   '#744792'
 ];
 
-const button = document.getElementById('load-quote');
-const quote_box = document.getElementById('quote-box');
-const header = document.getElementById('random-quotes');
-
 /*** 
  * Returns a random item from a given array when called.
  * Uses Math.floor and Math.random to generate a random number from the array's length.
@@ -84,12 +80,15 @@ function getRandomItem(array) {
  * @param buttonHeaderColor holds the random color to allow specific elements to match
 ***/
 
-function changeColors() {
-  const buttonHeaderColor = getRandomItem(colors);
+function changeColors(arrayOfColors, doc) {
+  const button = document.getElementById('load-quote');
+  const quote_box = document.getElementById('quote-box');
+  const header = document.getElementById('random-quotes');
+  const buttonHeaderColor = getRandomItem(arrayOfColors);
   button.style.backgroundColor = buttonHeaderColor;
   quote_box.style.backgroundColor = buttonHeaderColor;
   header.style.backgroundColor = buttonHeaderColor;
-  document.body.style.backgroundColor = getRandomItem(colors);
+  document.body.style.backgroundColor = getRandomItem(arrayOfColors);
 }
 
 /***
@@ -124,7 +123,7 @@ function printQuote() {
   html += `</p>`;
 
   document.getElementById('quote-box').innerHTML = html;
-  changeColors();
+  changeColors(colors, document);
 }
 
 printQuote();
