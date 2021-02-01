@@ -5,7 +5,7 @@ project 1 - A Random Quote Generator
 
 const quotes = [
   {
-    quote: "I’ve failed over and over and over again in my life and that is why I succeed.",
+    quote: 'I’ve failed over and over and over again in my life and that is why I succeed.',
     source: 'Michael Jordan',
     tag: '#Motivation'
   },
@@ -15,7 +15,7 @@ const quotes = [
     tag: '#Hero'
   },
   {
-    quote: "Who controls the past controls the future. Who controls the present controls the past.",
+    quote: 'Who controls the past controls the future. Who controls the present controls the past.',
     source: 'George Orwell',
     citation: '1984',
     year: 1949,
@@ -34,7 +34,7 @@ const quotes = [
     tag: '#Genius'
   },
   {
-    quote: "Information is power. But like all power, there are those who want to keep it for themselves.",
+    quote: 'Information is power. But like all power, there are those who want to keep it for themselves.',
     source: 'Aaron Swartz',
     tag: '#Hero'
   },
@@ -45,7 +45,7 @@ const quotes = [
     year: 2012,
     tag: '#Legend'
   }
-];
+]
 
 const colors = [
   '#246D0A',
@@ -61,18 +61,18 @@ const colors = [
   '#478B92',
   '#924E47',
   '#744792'
-];
+]
 
-/*** 
+/**
  * Returns a random item from a given array when called.
  * Uses Math.floor and Math.random to generate a random number from the array's length.
  * @param randomItem the random index position of the item
  * @returns array[randomItem] the random item taken from the given array
-***/
+**/
 
-function getRandomItem(array) {
-  const randomItem = Math.floor(Math.random() * array.length);
-  return array[randomItem];
+function getRandomItem (array) {
+  const randomItem = Math.floor(Math.random() * array.length)
+  return array[randomItem]
 }
 
 /***
@@ -80,15 +80,15 @@ function getRandomItem(array) {
  * @param buttonHeaderColor holds the random color to allow specific elements to match
 ***/
 
-function changeColors(arrayOfColors, doc) {
-  const button = document.getElementById('load-quote');
-  const quote_box = document.getElementById('quote-box');
-  const header = document.getElementById('random-quotes');
-  const buttonHeaderColor = getRandomItem(arrayOfColors);
-  button.style.backgroundColor = buttonHeaderColor;
-  quote_box.style.backgroundColor = buttonHeaderColor;
-  header.style.backgroundColor = buttonHeaderColor;
-  document.body.style.backgroundColor = getRandomItem(arrayOfColors);
+function changeColors (arrayOfColors, doc) {
+  const button = document.getElementById('load-quote')
+  const quoteBox = document.getElementById('quote-box')
+  const header = document.getElementById('random-quotes')
+  const buttonHeaderColor = getRandomItem(arrayOfColors)
+  button.style.backgroundColor = buttonHeaderColor
+  quoteBox.style.backgroundColor = buttonHeaderColor
+  header.style.backgroundColor = buttonHeaderColor
+  document.body.style.backgroundColor = getRandomItem(arrayOfColors)
 }
 
 /***
@@ -99,33 +99,33 @@ function changeColors(arrayOfColors, doc) {
  * @param html holds the layout of the content to be printed to the page
 ***/
 
-function printQuote() {
-  const randomQuote = getRandomItem(quotes);
+function printQuote () {
+  const randomQuote = getRandomItem(quotes)
 
   let html = `<p class="quote">${randomQuote.quote}</p>
-              <p class="source">${randomQuote.source}`;
-  
+              <p class="source">${randomQuote.source}`
+
   if (randomQuote.citation && randomQuote.year) {
     html += `<span class="citation">${randomQuote.citation}</span>
-             <span class="year">${randomQuote.year}</span>`;
-
+             <span class="year">${randomQuote.year}</span>`
   } else if (randomQuote.citation && !randomQuote.year) {
-      html += `<span class="citation">${randomQuote.citation}</span>`;
-
+    html += `<span class="citation">${randomQuote.citation}</span>`
   } else if (randomQuote.year && !randomQuote.citation) {
-      html += `<span class="year">${randomQuote.year}</span>`;
+    html += `<span class="year">${randomQuote.year}</span>`
   }
 
   if (randomQuote.tag) {
-    html += `<span class="tag">${randomQuote.tag}</span>`;
+    html += `<span class="tag">${randomQuote.tag}</span>`
   }
 
-  html += `</p>`;
+  html += `</p>`
 
-  document.getElementById('quote-box').innerHTML = html;
-  changeColors(colors, document);
+  document.getElementById('quote-box').innerHTML = html
+  changeColors(colors, document)
 }
 
-printQuote();
+printQuote()
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener('click', printQuote, false)
+
+setInterval(printQuote, 5000)
